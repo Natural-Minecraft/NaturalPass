@@ -1,0 +1,315 @@
+prefix: "&#00AAFF&lNatural&#55FF55&lPass &8┃ &f"
+
+messages:
+  plugin-enabled: "&#55FF55✔ &fBattle Pass system loaded successfully!"
+  config-reloaded: "&#55FF55✔ &fConfiguration reloaded successfully."
+
+  player-only: "&#FF5555✘ &fThis command can only be used by players."
+  no-permission: "&#FF5555✘ &fYou lack the required permissions for this action."
+  player-not-found: "&#FF5555✘ &fSpecified player could not be found."
+  invalid-amount: "&#FF5555✘ &fPlease provide a valid numeric amount."
+  amount-must-be-positive: "&#FF5555✘ &fThe amount must be a positive number."
+  invalid-item-type: "&#FF5555✘ &fInvalid type! Use: &7premium, coins, &for &7levelboost&f."
+
+  usage:
+    battlepass: "&#00AAFF» &fUsage: &7/battlepass"
+    add-premium: "&#00AAFF» &fUsage: &7/battlepass addpremium <player>"
+    remove-premium: "&#00AAFF» &fUsage: &7/battlepass removepremium <player>"
+    add-xp: "&#00AAFF» &fUsage: &7/battlepass addxp <player> <amount>"
+    remove-xp: "&#00AAFF» &fUsage: &7/battlepass removexp <player> <amount>"
+    add-coins: "&#00AAFF» &fUsage: &7/battlepass addcoins <player> <amount>"
+    remove-coins: "&#00AAFF» &fUsage: &7/battlepass removecoins <player> <amount>"
+    giveitem: "&#00AAFF» &fUsage: &7/battlepass giveitem <type> <player> <amount>"
+    reset-player: "&#00AAFF» &fUsage: &7/battlepass resetplayer <player>"
+
+  reset-player:
+    sender: "&#55FF55✔ &fProgress reset for &#00AAFF%player%&f."
+    target: "&#FF5555⚠ &fYour Battle Pass progress has been reset by an administrator."
+
+  help:
+    header: "&#00AAFF┃ &f&lNaturalPass Commands"
+    battlepass: " &8• &#00AAFF/bp &8- &7Open the main menu"
+    help: " &8• &#00AAFF/bp help &8- &7Show this help menu"
+    reload: " &8• &#00AAFF/bp reload &8- &7Reload plugin configs"
+    reset-season: " &8• &#00AAFF/bp reset season &8- &7Force reset the season"
+    reset-missions: " &8• &#00AAFF/bp reset missions &8- &7Force reset daily missions"
+    reset-player: " &8• &#00AAFF/bp resetplayer <p> &8- &7Reset player progress"
+    add-premium: " &8• &#00AAFF/bp addpremium <p> &8- &7Grant premium pass"
+    remove-premium: " &8• &#00AAFF/bp removepremium <p> &8- &7Revoke premium pass"
+    add-xp: " &8• &#00AAFF/bp addxp <p> <n> &8- &7Add experience points"
+    remove-xp: " &8• &#00AAFF/bp removexp <p> <n> &8- &7Remove experience points"
+    add-coins: " &8• &#00AAFF/bp addcoins <p> <n> &8- &7Add battle coins"
+    remove-coins: " &8• &#00AAFF/bp removecoins <p> <n> &8- &7Remove battle coins"
+    giveitem: " &8• &#00AAFF/bp giveitem <t> <p> <n> &8- &7Give special items"
+    exclude-top: " &8• &#00AAFF/bp excludefromtop <p> &8- &7Hide from leaderboard"
+    include-top: " &8• &#00AAFF/bp includetop <p> &8- &7Show on leaderboard"
+
+  premium:
+    given-sender: "&#55FF55✔ &fPremium pass granted to &#00AAFF%target%&f."
+    given-target: "&#00AAFF┃ &f&lPremium Unlocked\n&fYou now have access to the Premium Battle Pass!"
+    removed-sender: "&#FF5555✘ &fPremium pass revoked from %target%."
+    removed-target: "&#FF5555⚠ &fYour Premium Battle Pass has been revoked."
+    required: "&#FF5555⚠ &fThis reward requires the &lPREMIUM &fpass."
+
+  xp:
+    added-sender: "&#55FF55✔ &fAdded &#55FF55%amount% XP &fto %target%."
+    added-target: "&#55FF55+ %amount% XP"
+    removed-sender: "&#FF5555✘ &fRemoved %amount% XP from %target%."
+    removed-target: "&#FF5555- %amount% XP"
+
+  level-up: "&#00AAFF┃ &f&lLevel Up! &8» &fYou are now &7Level &#55FF55%level%&f."
+  new-rewards: "&#55FF55✔ &fYou have new rewards waiting to be claimed!"
+
+  rewards-available: "&#00AAFF┃ &fWelcome back! You have &#55FF55%amount% &frewards to claim."
+  rewards-notification: "&#00AAFF┃ &fNotification: &#55FF55%amount% &fnew rewards available."
+
+  mission:
+    completed: "&#55FF55✔ &f&lMission Complete: &a%mission% &8(&#55FF55+%reward_xp% XP&8)"
+    reset: "&#00AAFF┃ &fDaily missions have been reset."
+    forced-reset: "&#00AAFF┃ &fAn administrator has reset the daily missions."
+    reset-complete: "&#55FF55✔ &fMissions reset successfully."
+    reset-admin: "&#00AAFF┃ &f&7%admin% &freset the daily missions."
+    actionbar-progress: "&b%mission% &8» &f%current%&8/&7%required%"
+    actionbar-completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
+
+  season:
+    reset: "&#00AAFF┃ &f&lSeason Reset\n&fA new season has begun! Good luck."
+    forced-reset: "&#FF5555⚠ &f&lSeason Force Reset\n&fAn administrator has reset the season."
+    reset-warning: "&#FF5555⚠ &f&lWarning: &fThe season will reset in 2 seconds."
+    reset-complete: "&#55FF55✔ &fSeason reset successfully."
+    reset-admin: "&#00AAFF┃ &f&lSeason Reset &8┃ &fDone by %admin%."
+    ends-in: "&7Season ends in: &#00AAFF%season_time%"
+    achievement: "&#00AAFF┃ &f&lNaturalPass &8» &#00AAFF%player% &fcompleted the Battle Pass!"
+    premium-achievement: "&#00AAFF┃ &f&lNaturalPass &8» &#00AAFF%player% &fis now a &#55FF55&lLEGEND &f(Premium Max)!"
+
+  rewards:
+    free-claimed: "&#55FF55✔ &fFree rewards claimed successfully!"
+    premium-claimed: "&#55FF55✔ &fPremium rewards claimed successfully!"
+    already-claimed: "&#FF5555✘ &fYou've already claimed this reward."
+    cannot-claim: "&#FF5555✘ &fYou cannot claim this reward yet."
+    locked: "&#FF5555✘ &f&lLocked &7(Lvl %level%)"
+    item-reward: " &8• &f%amount%x &#00AAFF%item%"
+    item-reward-dropped: " &8• &f%amount%x &#00AAFF%item% &7(Inventory full, dropped)"
+    command-reward: " &8• &#55FF55%reward%"
+    already-claimed-error: "&#FF5555✘ &fReward already redeemed."
+
+  daily-reward:
+    claimed: "&#55FF55✔ &fDaily reward claimed! &8(&#55FF55+%amount% XP&8)"
+    already-claimed: "&#FF5555✘ &fYou've already claimed your daily reward today."
+
+  coins:
+    added-sender: "&#55FF55✔ &fAdded &#00AAFF%amount% Coins &fto %target%."
+    added-target: "&#00AAFF+ %amount% Coins"
+    removed-sender: "&#FF5555✘ &fRemoved %amount% Coins from %target%."
+    removed-target: "&#FF5555- %amount% Coins"
+    insufficient: "&#FF5555✘ &fInsufficient Battle Coins!"
+    purchased: "&#55FF55✔ &fPurchase successful: &a%item%&f."
+    distributed: "&#00AAFF┃ &fYou've received &#00AAFF%amount% Coins &ffrom the leaderboard!"
+
+  admin:
+    help-menu: "&#00AAFF┃ &f&lAdmin Panel Help"
+    no-permission: "&#FF5555✘ &fRestricted access. Admin permissions required."
+
+reward-types:
+  free: "&7FREE"
+  premium: "&#55FF55&lPREMIUM"
+
+gui:
+  battlepass: "&#00AAFF&lNatural&#55FF55&lPass &8┃ &fLevel %page%"
+  missions: "&#00AAFF&lDaily Missions"
+  leaderboard: "&#00AAFF&lTop Players"
+  shop: "&#00AAFF&lBattle Shop"
+
+items:
+  separator:
+    name: " "
+  progress:
+    name: "&#00AAFF┃ &f&lYour Progress"
+    lore:
+      - "&7Current Level: &#55FF55%level%"
+      - "&7Experience: &f%xp%&8/&7%xp_needed%"
+      - ""
+      - "&7Pass Type: %premium_status%"
+      - ""
+      - "&7Season ends in: &#00AAFF%season_time%"
+  premium-status:
+    active: "&#55FF55&lPREMIUM"
+    inactive: "&7FREE"
+  reward-available:
+    name: "&#55FF55&lReward Unlock &8┃ &fLevel %level%"
+    lore-header:
+      - "&7Type: %type%"
+      - ""
+      - "&7Contains:"
+    lore-footer:
+      - ""
+      - "&#55FF55▶ CLICK TO CLAIM"
+  reward-level-locked:
+    name: "&7&lLocked Reward &8┃ &fLevel %level%"
+    lore-header:
+      - "&7Type: %type%"
+      - ""
+      - "&7Contains:"
+    lore-footer:
+      - ""
+      - "&#FF5555✘ REACH LEVEL %level%"
+  reward-premium-locked:
+    name: "&#FF5555&lPremium Locked &8┃ &fLevel %level%"
+    lore-header:
+      - "&7Type: &#FF5555&lPREMIUM"
+      - ""
+      - "&7Contains:"
+    lore-footer:
+      - ""
+      - "&#FF5555✘ PREMIUM PASS REQUIRED"
+  reward-claimed:
+    name: "&8&lClaimed &8┃ &fLevel %level%"
+    lore-header:
+      - "&7Type: %type%"
+      - ""
+      - "&7You already received:"
+    lore-footer:
+      - ""
+      - "&8✔ ALREADY CLAIMED"
+  next-page:
+    name: "&#55FF55&lNext Page &8»"
+    lore:
+      - "&7Go to page &f%page%"
+  previous-page:
+    name: "&#00AAFF&l« Previous Page"
+    lore:
+      - "&7Go to page &f%page%"
+  back-button:
+    name: "&#FF5555&l« Back"
+    lore:
+      - "&7Return to main menu"
+  missions-button:
+    name: "&#00AAFF&lDaily Missions"
+    lore:
+      - "&7Complete daily tasks to"
+      - "&7earn Battle Pass XP."
+      - ""
+      - "&7Resets in: &#55FF55%reset_time%"
+      - ""
+      - "&#00AAFF▶ CLICK TO VIEW"
+  leaderboard-button:
+    name: "&#55FF55&lLeaderboard"
+    lore:
+      - "&7View top players and"
+      - "&7earn daily rewards."
+      - ""
+      - "&7Next Payout: &#00AAFF%coins_time%"
+      - ""
+      - "&#55FF55▶ CLICK TO VIEW"
+  shop-button:
+    name: "&#00AAFF&lBattle Shop"
+    lore:
+      - "&7Spend your Battle Coins"
+      - "&7on exclusive items."
+      - ""
+      - "&7Balance: &#00AAFF%coins% ❂"
+      - ""
+      - "&#00AAFF▶ CLICK TO OPEN"
+  shop-balance:
+    name: "&#00AAFF❂ &lYour Balance"
+    lore:
+      - "&7Current: &#00AAFF%coins% ❂"
+      - ""
+      - "&7Earn coins by placing"
+      - "&7in the daily top 10!"
+  daily-reward:
+    name: "&#55FF55&lDaily Login Reward"
+    lore-available:
+      - "&7Claim your daily boost!"
+      - ""
+      - "&7Reward: &#55FF55+%xp% XP"
+      - ""
+      - "&#55FF55▶ CLICK TO CLAIM"
+    lore-cooldown:
+      - "&7You already claimed this."
+      - ""
+      - "&7Next claim: &7%time%"
+      - ""
+      - "&8● ON COOLDOWN"
+  
+  # Missions GUI items
+  mission-timer:
+    name: "&#00AAFF┃ &f&lMissions Reset"
+    lore:
+      - "&7Next reset in: &#55FF55%reset_time%"
+  mission-completed:
+    name: "&#55FF55&l%mission%"
+    lore:
+      - ""
+      - "&7Progress: &#55FF55&lCOMPLETED"
+      - "&7Reward: &#55FF55+%reward_xp% XP"
+      - ""
+      - "&#55FF55✔ MISSION DONE"
+  mission-in-progress:
+    name: "&7&l%mission%"
+    lore:
+      - ""
+      - "&7Progress: &f%progress%&8/&7%required%"
+      - "&7Reward: &#55FF55+%reward_xp% XP"
+      - ""
+      - "&8● IN PROGRESS..."
+
+  # Leaderboard GUI items
+  leaderboard-title:
+    name: "&#55FF55&lNaturalPass Leaderboard"
+    lore:
+      - "&7Top players earn daily"
+      - "&7Battle Coins based on rank!"
+      - ""
+      - "&7Next distribution: &#00AAFF%coins_time%"
+  leaderboard-rank:
+    first: "&#FFD700&l🥇 FIRST PLACE"
+    second: "&f&l🥈 SECOND PLACE"
+    third: "&#CD7F32&l🥉 THIRD PLACE"
+    other: "&7#%rank% PLACE"
+  leaderboard-player:
+    name: "%rank% &8┃ &f%player%"
+    lore:
+      - "&7Season Level: &#55FF55%level%"
+      - "&7Experience: &f%xp% XP"
+      - ""
+      - "&7Estimated Payout: &#00AAFF%coins% ❂"
+      - ""
+      - "%status%"
+  leaderboard-status:
+    you: "&#55FF55● IT'S YOU!"
+    other: "&8○ OTHER PLAYER"
+  coins-info:
+    name: "&#00AAFF❂ &lBattle Coins Info"
+    lore:
+      - "&7Battle Coins are used"
+      - "&7in the /bp shop."
+      - ""
+      - "&7Earn them by being in"
+      - "&7the top 10 players."
+      - ""
+      - "&7Resets in: &#00AAFF%time%"
+
+# Items configuration for giveitem command
+special-items:
+  premium-pass:
+    name: "&#00AAFF&lNaturalPass &8┃ &#55FF55&lPREMIUM"
+    lore:
+      - "&7Right-click to activate"
+      - "&7the Premium Battle Pass!"
+      - ""
+      - "&#55FF55&lUNIQUE ITEM"
+  battle-coins:
+    name: "&#00AAFF&lBattle Coin &8┃ &f❂"
+    lore:
+      - "&7Right-click to add"
+      - "&7to your balance."
+      - ""
+      - "&7Value: &#00AAFF1 ❂"
+  level-boost:
+    name: "&#55FF55&lLevel Boost &8┃ &f+100 XP"
+    lore:
+      - "&7Right-click to gain"
+      - "&7experience points."
+      - ""
+      - "&7Reward: &#55FF55100 XP"
