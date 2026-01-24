@@ -57,24 +57,10 @@ public class RewardsEditorListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryDrag(InventoryDragEvent event) {
-        if (!(event.getInventory().getHolder() instanceof com.Lino.battlePass.gui.BaseGui)) {
-            return;
-        }
-
-        String title = ChatColor.stripColor(event.getView().getTitle());
-        if (title != null && title.startsWith(EDIT_LEVEL_START) && title.endsWith(EDIT_LEVEL_END)) {
-            boolean topInventory = false;
-            for (int slot : event.getRawSlots()) {
-                if (slot < event.getInventory().getSize()) {
-                    topInventory = true;
-                    break;
-                }
-            }
-            if (topInventory) {
-                event.setCancelled(true);
-            }
+        if (event.getInventory().getHolder() instanceof com.Lino.battlePass.gui.BaseGui) {
+            event.setCancelled(true);
         }
     }
 

@@ -7,9 +7,12 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -42,6 +45,8 @@ public class MissionEditorListener implements Listener {
             return;
         }
 
+        event.setCancelled(true);
+
         Player player = (Player) event.getWhoClicked();
         String title = ChatColor.stripColor(event.getView().getTitle());
 
@@ -69,6 +74,13 @@ public class MissionEditorListener implements Listener {
 
             event.setCancelled(true);
             handleDetailsClick(player, event, missionKey);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onInventoryDrag(InventoryDragEvent event) {
+        if (event.getInventory().getHolder() instanceof com.Lino.battlePass.gui.BaseGui) {
+            event.setCancelled(true);
         }
     }
 

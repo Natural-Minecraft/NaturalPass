@@ -147,7 +147,7 @@ public class BattlePassGui extends BaseGui {
                     "%level%", String.valueOf(level),
                     "%type%", rewardType));
 
-            List<String> lore = createRewardLore(rewards, "items.reward-available");
+            List<String> lore = createRewardLore(rewards, "items.reward-available", rewardType);
             meta.setLore(lore);
             item.setItemMeta(meta);
             return item;
@@ -158,7 +158,7 @@ public class BattlePassGui extends BaseGui {
             meta.setDisplayName(plugin.getMessageManager().getMessage("items.reward-premium-locked.name",
                     "%level%", String.valueOf(level)));
 
-            List<String> lore = createRewardLore(rewards, "items.reward-premium-locked");
+            List<String> lore = createRewardLore(rewards, "items.reward-premium-locked", rewardType);
             meta.setLore(lore);
             item.setItemMeta(meta);
             return item;
@@ -173,7 +173,7 @@ public class BattlePassGui extends BaseGui {
                     "%level%", String.valueOf(level),
                     "%type%", rewardType));
 
-            List<String> lore = createRewardLore(rewards, "items.reward-level-locked");
+            List<String> lore = createRewardLore(rewards, "items.reward-level-locked", rewardType);
             meta.setLore(lore);
             item.setItemMeta(meta);
             return item;
@@ -195,17 +195,20 @@ public class BattlePassGui extends BaseGui {
                 "%type%",
                 plugin.getMessageManager().getMessage(isPremium ? "reward-types.premium" : "reward-types.free")));
 
-        List<String> lore = createRewardLore(rewards, "items.reward-claimed");
+        String rewardType = plugin.getMessageManager()
+                .getMessage(isPremium ? "reward-types.premium" : "reward-types.free");
+        List<String> lore = createRewardLore(rewards, "items.reward-claimed", rewardType);
         meta.setLore(lore);
         item.setItemMeta(meta);
         return item;
     }
 
-    private List<String> createRewardLore(List<Reward> rewards, String configPath) {
+    private List<String> createRewardLore(List<Reward> rewards, String configPath, String rewardType) {
         List<String> lore = new ArrayList<>();
 
         for (String line : plugin.getMessageManager().getMessagesConfig().getStringList(configPath + ".lore-header")) {
-            lore.add(GradientColorParser.parse(line));
+            String processedLine = line.replace("%type%", rewardType);
+            lore.add(GradientColorParser.parse(processedLine));
         }
 
         for (Reward r : rewards) {

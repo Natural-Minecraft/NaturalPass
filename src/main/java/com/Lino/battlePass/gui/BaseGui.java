@@ -11,7 +11,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseGui {
+import org.bukkit.inventory.InventoryHolder;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class BaseGui implements InventoryHolder {
 
     protected final BattlePass plugin;
     protected final String title;
@@ -24,7 +30,12 @@ public abstract class BaseGui {
     }
 
     public Inventory createInventory() {
-        return Bukkit.createInventory(null, size, title);
+        return Bukkit.createInventory(this, size, title);
+    }
+
+    @Override
+    public @NotNull Inventory getInventory() {
+        return null; // Not needed as we use the holder for identification
     }
 
     protected ItemStack createItem(Material material, String displayName, List<String> lore) {

@@ -2,6 +2,8 @@ package com.Lino.battlePass.listeners;
 
 import com.Lino.battlePass.BattlePass;
 import com.Lino.battlePass.models.PlayerData;
+import java.util.Set;
+import java.util.UUID;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -9,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -17,6 +20,7 @@ import java.util.List;
 public class GuiClickListener implements Listener {
 
     private final BattlePass plugin;
+    private final java.util.Set<UUID> processing = new java.util.HashSet<>();
 
     public GuiClickListener(BattlePass plugin) {
         this.plugin = plugin;
@@ -40,6 +44,12 @@ public class GuiClickListener implements Listener {
         if (clicked == null || !clicked.hasItemMeta())
             return;
 
+        if (processing.contains(player.getUniqueId()))
+            return;
+        processing.add(player.getUniqueId());
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> processing.remove(player.getUniqueId()), 10L); // 0.5s
+                                                                                                                    // cooldown
+
         if (isBattlePassGUI) {
             handleBattlePassClick(player, clicked, event.getSlot());
         } else if (title.equals(plugin.getMessageManager().getMessage("gui.leaderboard"))) {
@@ -51,6 +61,13 @@ public class GuiClickListener implements Listener {
             handleMissionsClick(player, clicked, event.getSlot());
         } else if (title.equals(plugin.getMessageManager().getMessage("gui.shop"))) {
             handleShopClick(player, clicked, event.getSlot());
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onInventoryDrag(InventoryDragEvent event) {
+        if (event.getInventory().getHolder() instanceof com.Lino.battlePass.gui.BaseGui) {
+            event.setCancelled(true);
         }
     }
 
