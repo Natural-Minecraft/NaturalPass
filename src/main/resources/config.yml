@@ -1,4 +1,4 @@
-# Battle Pass Configuration
+# Natural Pass Configuration
 
 # Season configuration
 season:
@@ -17,7 +17,7 @@ database:
   #MySQL Settings (Uncomment to use MySQL)
   #host: localhost
   #port: 3306
-  #database: battlepass
+  #database: naturalpass
   #username: root
   #password: ""
   #prefix: "bp_"
