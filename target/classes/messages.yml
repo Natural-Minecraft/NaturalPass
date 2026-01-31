@@ -71,6 +71,7 @@ messages:
     reset-admin: "&#00AAFF┃ &f&7%admin% &freset the daily missions."
     actionbar-progress: "&b%mission% &8» &f%current%&8/&7%required%"
     actionbar-completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
+    admin-reset: "&#00AAFF┃ &fDaily missions have been reset by an administrator."
 
   season:
     reset: "&#00AAFF┃ &f&lSeason Reset\n&fA new season has begun! Good luck."
@@ -105,10 +106,17 @@ messages:
     insufficient: "&#FF5555✘ &fInsufficient Battle Coins!"
     purchased: "&#55FF55✔ &fPurchase successful: &a%item%&f."
     distributed: "&#00AAFF┃ &fYou've received &#00AAFF%amount% Coins &ffrom the leaderboard!"
+    distribution-announcement: "&#00AAFF┃ &f&lBattle Coins Distribution\n&fTop 10 players have received their rewards!"
+    distribution-player: " &8• &#55FF55#%rank% &f%player% &8» &#00AAFF%amount% ❂"
+    received: "&#55FF55✔ &fYou received &#00AAFF%amount% ❂ &ffrom the distribution!"
 
   admin:
     help-menu: "&#00AAFF┃ &f&lAdmin Panel Help"
     no-permission: "&#FF5555✘ &fRestricted access. Admin permissions required."
+
+  shop:
+    insufficient-coins: "&#FF5555✘ &fYou don't have enough Battle Coins!"
+    purchase-success: "&#55FF55✔ &fSuccessfully purchased &a%item%&f!"
 
 reward-types:
   free: "&7FREE"
