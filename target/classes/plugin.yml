@@ -1,8 +1,8 @@
-name: BattlePass
+name: NaturalPass
 version: '8.0'
-main: com.Lino.battlePass.BattlePass
+main: id.naturalsmp.naturalpass.NaturalPass
 api-version: '1.21'
-author: [ Lino, Natural Dev Creative ]
+author: [ Natural Dev Creative ]
 website: https://www.spigotmc.org/resources/battlepass.125992/
 softdepend: [PlaceholderAPI, MythicMobs]
 
@@ -13,17 +13,17 @@ libraries:
   - org.slf4j:slf4j-simple:2.0.9
 
 commands:
-  battlepass:
-    description: Open the BattlePass GUI or manage battle pass system
-    usage: /battlepass [help|reload|addpremium|removepremium|addxp|removexp|addcoins|removecoins] [player] [amount]
-    aliases: [bp, pass]
-    permission: battlepass.use
+  naturalpass:
+    description: Open the NaturalPass GUI or manage battle pass system
+    usage: /naturalpass [help|reload|addpremium|removepremium|addxp|removexp|addcoins|removecoins] [player] [amount]
+    aliases: [np, pass, battlepass]
+    permission: naturalpass.use
     permission-message: You don't have permission to use this command!
 
 permissions:
-  battlepass.use:
-    description: Allows use of /battlepass command
+  naturalpass.use:
+    description: Allows use of /naturalpass command
     default: true
-  battlepass.admin:
+  NaturalPass.admin:
     description: Access to admin commands (reload, addpremium, removepremium)
     default: op

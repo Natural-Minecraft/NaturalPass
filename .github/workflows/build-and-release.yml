@@ -35,16 +35,18 @@ jobs:
           echo "artifact_name=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)" >> $GITHUB_OUTPUT
           echo "artifact_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_OUTPUT
 
-      - name: Update Latest Release
+      - name: Create Production Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest
-          name: Latest Build
+          tag_name: v${{ steps.info.outputs.artifact_version }}
+          name: NaturalPass v${{ steps.info.outputs.artifact_version }}
           body: |
-            Automated build from NaturalSMP CI/CD.
+            Automated Production Build from NaturalSMP CI/CD.
             Last Build Time: ${{ github.event.head_commit.timestamp }}
             Commit: ${{ github.sha }}
-          files: target/${{ steps.info.outputs.artifact_name }}-${{ steps.info.outputs.artifact_version }}.jar
+          files: target/BattlePass.jar
+          generate_release_notes: true
+          make_latest: true
           draft: false
           prerelease: false
         env:
