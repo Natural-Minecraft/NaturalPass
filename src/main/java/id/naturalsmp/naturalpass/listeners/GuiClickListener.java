@@ -28,7 +28,7 @@ public class GuiClickListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!(event.getInventory().getHolder() instanceof com.Lino.NaturalPass.gui.BaseGui)) {
+        if (!(event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.BaseGui)) {
             return;
         }
 
@@ -66,7 +66,7 @@ public class GuiClickListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryDrag(InventoryDragEvent event) {
-        if (event.getInventory().getHolder() instanceof com.Lino.NaturalPass.gui.BaseGui) {
+        if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.BaseGui) {
             event.setCancelled(true);
         }
     }
@@ -137,7 +137,7 @@ public class GuiClickListener implements Listener {
 
             case COMMAND_BLOCK:
                 if (player.hasPermission("NaturalPass.admin") && slot == 46) {
-                    new com.Lino.NaturalPass.gui.RewardsEditorGui(plugin, player).open();
+                    new id.naturalsmp.naturalpass.gui.RewardsEditorGui(plugin, player).open();
                 }
                 break;
 
@@ -178,7 +178,8 @@ public class GuiClickListener implements Listener {
                 return;
             }
 
-            List<com.Lino.NaturalPass.models.Reward> levelRewards = plugin.getRewardManager().getPremiumRewardsByLevel()
+            List<id.naturalsmp.naturalpass.models.Reward> levelRewards = plugin.getRewardManager()
+                    .getPremiumRewardsByLevel()
                     .get(level);
             if (levelRewards != null && !levelRewards.isEmpty()) {
                 if (data.level >= level && !data.claimedPremiumRewards.contains(level)) {
@@ -196,7 +197,8 @@ public class GuiClickListener implements Listener {
             int index = slot - 28;
             int level = startLevel + index;
 
-            List<com.Lino.NaturalPass.models.Reward> levelRewards = plugin.getRewardManager().getFreeRewardsByLevel()
+            List<id.naturalsmp.naturalpass.models.Reward> levelRewards = plugin.getRewardManager()
+                    .getFreeRewardsByLevel()
                     .get(level);
             if (levelRewards != null && !levelRewards.isEmpty()) {
                 if (data.level >= level && !data.claimedFreeRewards.contains(level)) {

@@ -41,7 +41,7 @@ public class MissionEditorListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!(event.getInventory().getHolder() instanceof com.Lino.NaturalPass.gui.BaseGui)) {
+        if (!(event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.BaseGui)) {
             return;
         }
 
@@ -79,7 +79,7 @@ public class MissionEditorListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryDrag(InventoryDragEvent event) {
-        if (event.getInventory().getHolder() instanceof com.Lino.NaturalPass.gui.BaseGui) {
+        if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.BaseGui) {
             event.setCancelled(true);
         }
     }
