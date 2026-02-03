@@ -17,7 +17,7 @@
     </properties>
 
     <build>
-        <finalName>NaturalPass</finalName>
+        <finalName>${project.artifactId}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>

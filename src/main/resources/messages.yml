@@ -123,10 +123,10 @@ reward-types:
   premium: "&#55FF55&lPREMIUM"
 
 gui:
-  battlepass: "&#00AAFF&lNatural&#55FF55&lPass &8┃ &fLevel %page%"
-  missions: "&#00AAFF&lDaily Missions"
-  leaderboard: "&#00AAFF&lTop Players"
-  shop: "&#00AAFF&lBattle Shop"
+  battlepass: "NaturalPass"
+  missions: "Daily Missions"
+  leaderboard: "Leaderboard"
+  shop: "Battle Shop"
 
 items:
   separator:
