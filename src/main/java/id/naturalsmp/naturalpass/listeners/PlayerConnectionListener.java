@@ -41,7 +41,8 @@ public class PlayerConnectionListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!player.isOnline()) return;
+                if (!player.isOnline())
+                    return;
 
                 PlayerData data = plugin.getPlayerDataManager().getPlayerData(uuid);
                 if (data != null) {
@@ -72,7 +73,7 @@ public class PlayerConnectionListener implements Listener {
         }
 
         plugin.getSoundManager().stopItemSound(uuid);
-        plugin.getMissionManager().clearPlayerActionbars(uuid);
+        plugin.getMissionManager().clearPlayerBossBars(uuid);
         plugin.getPlayerDataManager().removePlayer(uuid);
         plugin.getGuiManager().getCurrentPages().remove(event.getPlayer().getEntityId());
 

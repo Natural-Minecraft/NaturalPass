@@ -26,7 +26,8 @@ public class MissionManager {
     private volatile List<Mission> dailyMissions = Collections.synchronizedList(new ArrayList<>());
     private String currentMissionDate;
 
-    public MissionManager(NaturalPass plugin, ConfigManager configManager, DatabaseManager databaseManager, PlayerDataManager playerDataManager) {
+    public MissionManager(NaturalPass plugin, ConfigManager configManager, DatabaseManager databaseManager,
+            PlayerDataManager playerDataManager) {
         this.plugin = plugin;
         this.configManager = configManager;
         this.databaseManager = databaseManager;
@@ -188,8 +189,8 @@ public class MissionManager {
         progressTracker.trackProgress(player, type, target, amount, dailyMissions);
     }
 
-    public void clearPlayerActionbars(UUID uuid) {
-        progressTracker.clearPlayerActionbars(uuid);
+    public void clearPlayerBossBars(UUID uuid) {
+        progressTracker.clearPlayerBossBars(uuid);
     }
 
     public int getCompletedMissionsCount(PlayerData data) {
@@ -200,8 +201,7 @@ public class MissionManager {
         databaseManager.saveSeasonData(
                 resetHandler.getSeasonEndDate(),
                 resetHandler.getNextMissionReset(),
-                currentMissionDate
-        );
+                currentMissionDate);
     }
 
     private void saveDailyMissions() {

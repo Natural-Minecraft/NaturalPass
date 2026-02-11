@@ -3,10 +3,11 @@ package id.naturalsmp.naturalpass.managers;
 import id.naturalsmp.naturalpass.NaturalPass;
 import id.naturalsmp.naturalpass.models.Mission;
 import id.naturalsmp.naturalpass.models.PlayerData;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -15,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MissionProgressTracker {
 
     private final NaturalPass plugin;
-    private final Map<UUID, Map<String, Long>> lastActionbarUpdate = new ConcurrentHashMap<>();
-    private final Map<UUID, Map<String, Integer>> actionbarTasks = new ConcurrentHashMap<>();
+    private final Map<UUID, Map<String, BossBar>> playerBossBars = new ConcurrentHashMap<>();
+    private final Map<UUID, Map<String, Integer>> bossBarTasks = new ConcurrentHashMap<>();
     private final Set<Integer> scheduledTaskIds = ConcurrentHashMap.newKeySet();
     private final Map<UUID, Set<String>> playerCompletedMissions = new ConcurrentHashMap<>();
 
@@ -26,18 +27,22 @@ public class MissionProgressTracker {
 
     public void trackProgress(Player player, String type, String target, int amount, List<Mission> dailyMissions) {
         PlayerData data = plugin.getPlayerDataManager().getPlayerData(player.getUniqueId());
-        if (data == null || dailyMissions.isEmpty()) return;
+        if (data == null || dailyMissions.isEmpty())
+            return;
 
         UUID playerUUID = player.getUniqueId();
-        Set<String> completedKeys = playerCompletedMissions.computeIfAbsent(playerUUID, k -> ConcurrentHashMap.newKeySet());
+        Set<String> completedKeys = playerCompletedMissions.computeIfAbsent(playerUUID,
+                k -> ConcurrentHashMap.newKeySet());
 
         boolean changed = false;
         MessageManager messageManager = plugin.getMessageManager();
 
         for (Mission mission : dailyMissions) {
-            if (!mission.type.equals(type)) continue;
+            if (!mission.type.equals(type))
+                continue;
 
-            if (!mission.target.equals("ANY") && !mission.target.equals(target)) continue;
+            if (!mission.target.equals("ANY") && !mission.target.equals(target))
+                continue;
 
             String missionKey = generateMissionKey(mission);
 
@@ -67,9 +72,9 @@ public class MissionProgressTracker {
                         "%reward_xp%", String.valueOf(mission.xpReward)));
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
-                showCompletedActionbar(player, mission.name);
+                showCompletedBossBar(player, mission.name);
             } else {
-                showProgressActionbar(player, mission.name, newProgress, mission.required);
+                showProgressBossBar(player, mission.name, newProgress, mission.required);
             }
         }
 
@@ -79,21 +84,27 @@ public class MissionProgressTracker {
     }
 
     private String generateMissionKey(Mission mission) {
-        // Updated to include mission name to avoid collisions
         return mission.type + "_" + mission.target + "_" + mission.required + "_" + mission.name.hashCode();
     }
 
     public void resetProgress(String currentMissionDate) {
         playerCompletedMissions.clear();
-        lastActionbarUpdate.clear();
 
-        for (Map.Entry<UUID, Map<String, Integer>> entry : actionbarTasks.entrySet()) {
+        for (Map.Entry<UUID, Map<String, Integer>> entry : bossBarTasks.entrySet()) {
             for (Integer taskId : entry.getValue().values()) {
                 Bukkit.getScheduler().cancelTask(taskId);
                 scheduledTaskIds.remove(taskId);
             }
         }
-        actionbarTasks.clear();
+        bossBarTasks.clear();
+
+        // Remove all boss bars
+        for (Map<String, BossBar> bars : playerBossBars.values()) {
+            for (BossBar bar : bars.values()) {
+                bar.removeAll();
+            }
+        }
+        playerBossBars.clear();
 
         for (PlayerData data : plugin.getPlayerDataManager().getPlayerCache().values()) {
             data.missionProgress.clear();
@@ -127,115 +138,111 @@ public class MissionProgressTracker {
         }
     }
 
-    private void sendActionBar(Player player, String message) {
-        try {
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
-        } catch (Exception e) {
-            player.sendMessage("§7[§6Progress§7] " + message);
-        }
-    }
-
-    private void showProgressActionbar(Player player, String missionName, int current, int required) {
+    private void showProgressBossBar(Player player, String missionName, int current, int required) {
         UUID uuid = player.getUniqueId();
-
-        if (!lastActionbarUpdate.containsKey(uuid)) {
-            lastActionbarUpdate.put(uuid, new ConcurrentHashMap<>());
-        }
-        if (!actionbarTasks.containsKey(uuid)) {
-            actionbarTasks.put(uuid, new ConcurrentHashMap<>());
-        }
-
-        Map<String, Integer> playerTasks = actionbarTasks.get(uuid);
         String key = missionName.toLowerCase().replace(" ", "_");
 
-        if (playerTasks.containsKey(key)) {
-            int oldTaskId = playerTasks.get(key);
+        Map<String, BossBar> bars = playerBossBars.computeIfAbsent(uuid, k -> new ConcurrentHashMap<>());
+        Map<String, Integer> tasks = bossBarTasks.computeIfAbsent(uuid, k -> new ConcurrentHashMap<>());
+
+        // Cancel previous hide task if exists
+        if (tasks.containsKey(key)) {
+            int oldTaskId = tasks.get(key);
             Bukkit.getScheduler().cancelTask(oldTaskId);
             scheduledTaskIds.remove(oldTaskId);
         }
 
-        lastActionbarUpdate.get(uuid).put(key, System.currentTimeMillis());
-
         MessageManager messageManager = plugin.getMessageManager();
-        String progressMessage = messageManager.getMessage("messages.mission.actionbar-progress",
+        String progressMessage = messageManager.getMessage("messages.mission.bossbar-progress",
                 "%current%", String.valueOf(current),
                 "%required%", String.valueOf(required),
                 "%mission%", missionName);
 
-        sendActionBar(player, progressMessage);
+        // Create or update boss bar
+        BossBar bossBar = bars.get(key);
+        if (bossBar == null) {
+            bossBar = Bukkit.createBossBar(progressMessage, BarColor.GREEN, BarStyle.SEGMENTED_10);
+            bossBar.addPlayer(player);
+            bars.put(key, bossBar);
+        } else {
+            bossBar.setTitle(progressMessage);
+        }
 
-        int taskId = Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-            @Override
-            public void run() {
-                Long lastUpdate = lastActionbarUpdate.getOrDefault(uuid, new HashMap<>()).get(key);
-                if (lastUpdate != null && System.currentTimeMillis() - lastUpdate >= 29500) {
-                    sendActionBar(player, "");
-                    playerTasks.remove(key);
-                    lastActionbarUpdate.get(uuid).remove(key);
-                }
-            }
-        }, 600L).getTaskId();
+        double progress = Math.min((double) current / required, 1.0);
+        bossBar.setProgress(progress);
+        bossBar.setVisible(true);
 
-        playerTasks.put(key, taskId);
+        // Schedule hide after 5 seconds (100 ticks)
+        final BossBar finalBar = bossBar;
+        int taskId = Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            finalBar.setVisible(false);
+            finalBar.removeAll();
+            bars.remove(key);
+            tasks.remove(key);
+        }, 100L).getTaskId();
+
+        tasks.put(key, taskId);
         scheduledTaskIds.add(taskId);
-
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            scheduledTaskIds.remove(taskId);
-        }, 601L);
     }
 
-    private void showCompletedActionbar(Player player, String missionName) {
+    private void showCompletedBossBar(Player player, String missionName) {
         UUID uuid = player.getUniqueId();
         String key = missionName.toLowerCase().replace(" ", "_") + "_completed";
 
-        if (!actionbarTasks.containsKey(uuid)) {
-            actionbarTasks.put(uuid, new ConcurrentHashMap<>());
-        }
+        Map<String, BossBar> bars = playerBossBars.computeIfAbsent(uuid, k -> new ConcurrentHashMap<>());
+        Map<String, Integer> tasks = bossBarTasks.computeIfAbsent(uuid, k -> new ConcurrentHashMap<>());
 
-        Map<String, Integer> playerTasks = actionbarTasks.get(uuid);
-
-        if (playerTasks.containsKey(key)) {
-            int oldTaskId = playerTasks.get(key);
+        // Cancel previous task if exists
+        if (tasks.containsKey(key)) {
+            int oldTaskId = tasks.get(key);
             Bukkit.getScheduler().cancelTask(oldTaskId);
             scheduledTaskIds.remove(oldTaskId);
         }
 
         MessageManager messageManager = plugin.getMessageManager();
-        String completedMessage = messageManager.getMessage("messages.mission.actionbar-completed",
+        String completedMessage = messageManager.getMessage("messages.mission.bossbar-completed",
                 "%mission%", missionName);
 
-        int taskId = Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-            private int count = 0;
+        BossBar bossBar = bars.get(key);
+        if (bossBar == null) {
+            bossBar = Bukkit.createBossBar(completedMessage, BarColor.GREEN, BarStyle.SOLID);
+            bossBar.addPlayer(player);
+            bars.put(key, bossBar);
+        } else {
+            bossBar.setTitle(completedMessage);
+        }
 
-            @Override
-            public void run() {
-                if (count >= 15) {
-                    sendActionBar(player, "");
-                    Integer currentTaskId = playerTasks.remove(key);
-                    if (currentTaskId != null) {
-                        Bukkit.getScheduler().cancelTask(currentTaskId);
-                        scheduledTaskIds.remove(currentTaskId);
-                    }
-                    return;
-                }
-                sendActionBar(player, completedMessage);
-                count++;
-            }
-        }, 0L, 20L).getTaskId();
+        bossBar.setProgress(1.0);
+        bossBar.setVisible(true);
 
-        playerTasks.put(key, taskId);
+        // Schedule hide after 5 seconds (100 ticks)
+        final BossBar finalBar = bossBar;
+        int taskId = Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            finalBar.setVisible(false);
+            finalBar.removeAll();
+            bars.remove(key);
+            tasks.remove(key);
+        }, 100L).getTaskId();
+
+        tasks.put(key, taskId);
         scheduledTaskIds.add(taskId);
     }
 
-    public void clearPlayerActionbars(UUID uuid) {
-        if (actionbarTasks.containsKey(uuid)) {
-            actionbarTasks.get(uuid).values().forEach(taskId -> {
+    public void clearPlayerBossBars(UUID uuid) {
+        if (bossBarTasks.containsKey(uuid)) {
+            bossBarTasks.get(uuid).values().forEach(taskId -> {
                 Bukkit.getScheduler().cancelTask(taskId);
                 scheduledTaskIds.remove(taskId);
             });
-            actionbarTasks.remove(uuid);
+            bossBarTasks.remove(uuid);
         }
-        lastActionbarUpdate.remove(uuid);
+        if (playerBossBars.containsKey(uuid)) {
+            playerBossBars.get(uuid).values().forEach(bar -> {
+                bar.setVisible(false);
+                bar.removeAll();
+            });
+            playerBossBars.remove(uuid);
+        }
         playerCompletedMissions.remove(uuid);
     }
 
@@ -243,11 +250,17 @@ public class MissionProgressTracker {
         scheduledTaskIds.forEach(taskId -> Bukkit.getScheduler().cancelTask(taskId));
         scheduledTaskIds.clear();
 
-        actionbarTasks.values().forEach(tasks ->
-                tasks.values().forEach(taskId -> Bukkit.getScheduler().cancelTask(taskId))
-        );
-        actionbarTasks.clear();
-        lastActionbarUpdate.clear();
+        bossBarTasks.values()
+                .forEach(tasks -> tasks.values().forEach(taskId -> Bukkit.getScheduler().cancelTask(taskId)));
+        bossBarTasks.clear();
+
+        for (Map<String, BossBar> bars : playerBossBars.values()) {
+            for (BossBar bar : bars.values()) {
+                bar.setVisible(false);
+                bar.removeAll();
+            }
+        }
+        playerBossBars.clear();
         playerCompletedMissions.clear();
     }
 

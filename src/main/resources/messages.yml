@@ -69,8 +69,8 @@ messages:
     forced-reset: "&#00AAFF┃ &fAn administrator has reset the daily missions."
     reset-complete: "&#55FF55✔ &fMissions reset successfully."
     reset-admin: "&#00AAFF┃ &f&7%admin% &freset the daily missions."
-    actionbar-progress: "&b%mission% &8» &f%current%&8/&7%required%"
-    actionbar-completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
+    bossbar-progress: "&b%mission% &8» &f%current%&8/&7%required%"
+    bossbar-completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
     admin-reset: "&#00AAFF┃ &fDaily missions have been reset by an administrator."
 
   season:
@@ -123,10 +123,10 @@ reward-types:
   premium: "&#55FF55&lPREMIUM"
 
 gui:
-  battlepass: "NaturalPass"
-  missions: "Daily Missions"
-  leaderboard: "Leaderboard"
-  shop: "Battle Shop"
+  battlepass: "<gradient:#00AAFF:#55FF55>⚔ NaturalPass</gradient>"
+  missions: "<gradient:#00AAFF:#55FF55>⚡ Daily Missions</gradient>"
+  leaderboard: "<gradient:#FFD700:#FF6B6B>🏆 Leaderboard</gradient>"
+  shop: "<gradient:#00AAFF:#FFD700>🛒 Battle Shop</gradient>"
 
 items:
   separator:

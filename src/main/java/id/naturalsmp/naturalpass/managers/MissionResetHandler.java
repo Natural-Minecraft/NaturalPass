@@ -121,7 +121,8 @@ public class MissionResetHandler {
         String resetType = plugin.getConfigManager().getSeasonResetType();
 
         if (resetType.equalsIgnoreCase("MONTH_START")) {
-            seasonEndDate = LocalDateTime.now().plusMonths(1).with(TemporalAdjusters.firstDayOfMonth()).withHour(0).withMinute(0).withSecond(0);
+            seasonEndDate = LocalDateTime.now().plusMonths(1).with(TemporalAdjusters.firstDayOfMonth()).withHour(0)
+                    .withMinute(0).withSecond(0);
         } else {
             seasonEndDate = LocalDateTime.now().plusDays(plugin.getConfigManager().getSeasonDuration());
         }
@@ -138,10 +139,11 @@ public class MissionResetHandler {
 
         MessageManager messageManager = plugin.getMessageManager();
         String hourStr = hours == 1 ? messageManager.getMessage("time.hour") : messageManager.getMessage("time.hours");
-        String minuteStr = minutes == 1 ? messageManager.getMessage("time.minute") : messageManager.getMessage("time.minutes");
+        String minuteStr = minutes == 1 ? messageManager.getMessage("time.minute")
+                : messageManager.getMessage("time.minutes");
 
         return messageManager.getMessage("time.hours-minutes", "%hours%", String.valueOf(hours),
-                "%minutes%", String.valueOf(minutes));
+                "%hour%", hourStr, "%minutes%", String.valueOf(minutes), "%minute%", minuteStr);
     }
 
     public String getTimeUntilSeasonEnd() {
@@ -158,7 +160,7 @@ public class MissionResetHandler {
         String hourStr = hours == 1 ? messageManager.getMessage("time.hour") : messageManager.getMessage("time.hours");
 
         return messageManager.getMessage("time.days-hours", "%days%", String.valueOf(days),
-                "%hours%", String.valueOf(hours));
+                "%day%", dayStr, "%hours%", String.valueOf(hours), "%hour%", hourStr);
     }
 
     public String getTimeUntilDailyReward(long lastClaimed) {
@@ -175,10 +177,11 @@ public class MissionResetHandler {
 
         MessageManager messageManager = plugin.getMessageManager();
         String hourStr = hours == 1 ? messageManager.getMessage("time.hour") : messageManager.getMessage("time.hours");
-        String minuteStr = minutes == 1 ? messageManager.getMessage("time.minute") : messageManager.getMessage("time.minutes");
+        String minuteStr = minutes == 1 ? messageManager.getMessage("time.minute")
+                : messageManager.getMessage("time.minutes");
 
         return messageManager.getMessage("time.hours-minutes", "%hours%", String.valueOf(hours),
-                "%minutes%", String.valueOf(minutes));
+                "%hour%", hourStr, "%minutes%", String.valueOf(minutes), "%minute%", minuteStr);
     }
 
     public LocalDateTime getNextMissionReset() {

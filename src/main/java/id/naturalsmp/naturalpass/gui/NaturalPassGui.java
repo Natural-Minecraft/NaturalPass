@@ -21,7 +21,7 @@ public class NaturalPassGui extends BaseGui {
     private final int maxLevel;
 
     public NaturalPassGui(NaturalPass plugin, Player player, int page) {
-        super(plugin, plugin.getMessageManager().getMessage("gui.NaturalPass", "%page%", String.valueOf(page)), 54);
+        super(plugin, plugin.getMessageManager().getMessage("gui.battlepass", "%page%", String.valueOf(page)), 54);
         this.player = player;
         this.playerData = plugin.getPlayerDataManager().getPlayerData(player.getUniqueId());
         this.page = page;
