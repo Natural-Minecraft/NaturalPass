@@ -96,9 +96,16 @@ public class CoinsDistributionTask extends BukkitRunnable {
         long hours = ChronoUnit.HOURS.between(now, nextDistribution);
         long minutes = ChronoUnit.MINUTES.between(now, nextDistribution) % 60;
 
-        return plugin.getMessageManager().getMessage("time.hours-minutes",
+        id.naturalsmp.naturalpass.managers.MessageManager messageManager = plugin.getMessageManager();
+        String hourStr = hours == 1 ? messageManager.getMessage("time.hour") : messageManager.getMessage("time.hours");
+        String minuteStr = minutes == 1 ? messageManager.getMessage("time.minute")
+                : messageManager.getMessage("time.minutes");
+
+        return messageManager.getMessage("time.hours-minutes",
                 "%hours%", String.valueOf(hours),
-                "%minutes%", String.valueOf(minutes));
+                "%hour%", hourStr,
+                "%minutes%", String.valueOf(minutes),
+                "%minute%", minuteStr);
     }
 
     public LocalDateTime getNextDistribution() {

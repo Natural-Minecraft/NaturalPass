@@ -16,7 +16,7 @@ commands:
   naturalpass:
     description: Open the NaturalPass GUI or manage battle pass system
     usage: /naturalpass [help|reload|addpremium|removepremium|addxp|removexp|addcoins|removecoins] [player] [amount]
-    aliases: [np, pass, battlepass]
+    aliases: [np, pass, battlepass, bp]
     permission: naturalpass.use
     permission-message: You don't have permission to use this command!
 

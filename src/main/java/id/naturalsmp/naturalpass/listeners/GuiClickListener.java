@@ -32,12 +32,7 @@ public class GuiClickListener implements Listener {
             return;
         }
 
-        String title = event.getView().getTitle();
         Player player = (Player) event.getWhoClicked();
-
-        boolean isNaturalPassGUI = title
-                .startsWith(plugin.getMessageManager().getMessage("gui.NaturalPass").split("%")[0]);
-
         event.setCancelled(true);
 
         ItemStack clicked = event.getCurrentItem();
@@ -47,19 +42,18 @@ public class GuiClickListener implements Listener {
         if (processing.contains(player.getUniqueId()))
             return;
         processing.add(player.getUniqueId());
-        plugin.getServer().getScheduler().runTaskLater(plugin, () -> processing.remove(player.getUniqueId()), 10L); // 0.5s
-                                                                                                                    // cooldown
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> processing.remove(player.getUniqueId()), 10L);
 
-        if (isNaturalPassGUI) {
+        if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.NaturalPassGui) {
             handleNaturalPassClick(player, clicked, event.getSlot());
-        } else if (title.equals(plugin.getMessageManager().getMessage("gui.leaderboard"))) {
+        } else if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.LeaderboardGui) {
             if (clicked.getType() == Material.BARRIER) {
                 int page = plugin.getGuiManager().getCurrentPages().getOrDefault(player.getEntityId(), 1);
                 plugin.getGuiManager().openNaturalPassGUI(player, page);
             }
-        } else if (title.equals(plugin.getMessageManager().getMessage("gui.missions"))) {
+        } else if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.MissionsGui) {
             handleMissionsClick(player, clicked, event.getSlot());
-        } else if (title.equals(plugin.getMessageManager().getMessage("gui.shop"))) {
+        } else if (event.getInventory().getHolder() instanceof id.naturalsmp.naturalpass.gui.ShopGui) {
             handleShopClick(player, clicked, event.getSlot());
         }
     }
