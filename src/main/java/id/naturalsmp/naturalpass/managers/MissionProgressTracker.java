@@ -153,7 +153,7 @@ public class MissionProgressTracker {
         }
 
         MessageManager messageManager = plugin.getMessageManager();
-        String progressMessage = messageManager.getMessage("messages.mission.bossbar-progress",
+        String progressMessage = messageManager.getMessage("messages.mission.bossbar.progress",
                 "%current%", String.valueOf(current),
                 "%required%", String.valueOf(required),
                 "%mission%", missionName);
@@ -200,7 +200,7 @@ public class MissionProgressTracker {
         }
 
         MessageManager messageManager = plugin.getMessageManager();
-        String completedMessage = messageManager.getMessage("messages.mission.bossbar-completed",
+        String completedMessage = messageManager.getMessage("messages.mission.bossbar.completed",
                 "%mission%", missionName);
 
         BossBar bossBar = bars.get(key);

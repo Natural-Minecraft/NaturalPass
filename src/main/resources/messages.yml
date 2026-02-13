@@ -69,8 +69,9 @@ messages:
     forced-reset: "&#00AAFF┃ &fAn administrator has reset the daily missions."
     reset-complete: "&#55FF55✔ &fMissions reset successfully."
     reset-admin: "&#00AAFF┃ &f&7%admin% &freset the daily missions."
-    bossbar-progress: "&b%mission% &8» &f%current%&8/&7%required%"
-    bossbar-completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
+    bossbar:
+      progress: "&b%mission% &8» &f%current%&8/&7%required%"
+      completed: "&#55FF55✔ &f&l%mission% &7(Complete)"
     admin-reset: "&#00AAFF┃ &fDaily missions have been reset by an administrator."
 
   season:
