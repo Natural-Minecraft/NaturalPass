@@ -6,7 +6,7 @@
 
     <groupId>id.naturalsmp</groupId>
     <artifactId>NaturalPass</artifactId>
-    <version>8.0</version>
+    <version>1.7.6</version>
     <packaging>jar</packaging>
 
     <name>NaturalPass</name>

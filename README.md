@@ -1,6 +1,10 @@
-# NaturalPass v1.7.5 (Polish Update)
+# NaturalPass v1.7.6 (Quality of Life)
 
 Sistem progresi ultimate untuk **NaturalSMP**. Tingkatkan level, selesaikan misi harian, dan klaim hadiah eksklusif setiap musimnya.
+
+## ✨ Fitur Baru v1.7.6 (Quality of Life)
+*   **BossBar Integration**: Integrasi BossBar dengan `NaturalCore` HUD Manager untuk tampilan yang lebih stabil dan tidak flicker.
+*   **Performance**: Optimasi pada pengecekan misi harian.
 
 ## ✨ Fitur Utama
 
