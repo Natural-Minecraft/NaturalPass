@@ -32,6 +32,8 @@ public class NaturalPassTabCompleter implements TabCompleter {
                 completions.add("giveitem");
                 completions.add("excludefromtop");
                 completions.add("includetop");
+                completions.add("event");
+                completions.add("stopevent");
             }
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("reset") && sender.hasPermission("NaturalPass.admin")) {
@@ -42,6 +44,12 @@ public class NaturalPassTabCompleter implements TabCompleter {
                 completions.add("premium");
                 completions.add("coins");
                 completions.add("levelboost");
+                completions.add("xpevent");
+            } else if (args[0].equalsIgnoreCase("event") && sender.hasPermission("NaturalPass.admin")) {
+                completions.add("2x");
+                completions.add("3x");
+                completions.add("4x");
+                completions.add("5x");
             } else if (sender.hasPermission("NaturalPass.admin")) {
                 String subCommand = args[0].toLowerCase();
 
@@ -63,6 +71,11 @@ public class NaturalPassTabCompleter implements TabCompleter {
                 return Bukkit.getOnlinePlayers().stream()
                         .map(Player::getName)
                         .collect(Collectors.toList());
+            } else if (subCommand.equals("event")) {
+                completions.add("30m");
+                completions.add("1h");
+                completions.add("2h");
+                completions.add("3h");
             } else if (subCommand.equals("addxp") || subCommand.equals("removexp") ||
                     subCommand.equals("addcoins") || subCommand.equals("removecoins")) {
 

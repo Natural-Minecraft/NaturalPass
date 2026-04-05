@@ -130,6 +130,16 @@ public class NaturalPassExpansion extends PlaceholderExpansion {
                 int completed = getCompletedMissionsCount(data);
                 int total = plugin.getMissionManager().getDailyMissions().size();
                 return completed + "/" + total;
+
+            case "xp_event_active":
+                return plugin.getXpEventManager().isEventActive() ? "Yes" : "No";
+
+            case "xp_event_multiplier":
+                return String.valueOf(plugin.getXpEventManager().getMultiplier()) + "x";
+
+            case "xp_event_time":
+            case "xp_event_remaining":
+                return plugin.getXpEventManager().getTimeRemaining();
         }
 
         if (identifier.startsWith("mission_")) {

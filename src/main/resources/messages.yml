@@ -21,6 +21,7 @@ messages:
     remove-coins: "&#00AAFF» &fUsage: &7/naturalpass removecoins <player> <amount>"
     giveitem: "&#00AAFF» &fUsage: &7/naturalpass giveitem <type> <player> <amount>"
     reset-player: "&#00AAFF» &fUsage: &7/naturalpass resetplayer <player>"
+    event: "&#00AAFF» &fUsage: &7/np event <multiplier> <duration> &8(e.g. 2x 1h)"
 
   reset-player:
     sender: "&#55FF55✔ &fProgress reset for &#00AAFF%player%&f."
@@ -43,6 +44,8 @@ messages:
     giveitem: " &8• &#00AAFF/np giveitem <t> <p> <n> &8- &7Give special items"
     exclude-top: " &8• &#00AAFF/np excludefromtop <p> &8- &7Hide from leaderboard"
     include-top: " &8• &#00AAFF/np includetop <p> &8- &7Show on leaderboard"
+    event: " &8• &#00AAFF/np event <mul> <dur> &8- &7Start global XP event"
+    stopevent: " &8• &#00AAFF/np stopevent &8- &7Stop current XP event"
 
   premium:
     given-sender: "&#55FF55✔ &fPremium pass granted to &#00AAFF%target%&f."
@@ -98,6 +101,25 @@ messages:
   daily-reward:
     claimed: "&#55FF55✔ &fDaily reward claimed! &8(&#55FF55+%amount% XP&8)"
     already-claimed: "&#FF5555✘ &fYou've already claimed your daily reward today."
+
+  event:
+    started: "&#FFD700&lXP EVENT STARTED! &fAll mission XP is now &#00AAFF%multiplier%x &ffor &#55FF55%duration%&f!"
+    stopped: "&#FF5555⚠ &fThe XP event has been stopped by an admin."
+    not-active: "&#FF5555✘ &fThere is no active XP event right now."
+    invalid-multiplier: "&#FF5555✘ &fInvalid multiplier! Use e.g. 2x, 3x."
+    invalid-duration: "&#FF5555✘ &fInvalid duration! Use e.g. 30m, 1h, etc."
+
+  items:
+    xp-event-activated: "&#FFD700&lXP EVENT! &f%player% activated a &#55FF552x XP Event &ffor &#00AAFF%duration%&f!"
+    xp-event-already-active: "&#FF5555✘ &fAn XP event is already active!"
+    xp-boost-used: "&#55FF55✔ &fUsed %items%x boost! Gained &#55FF55%amount% XP&f."
+    given: "&#55FF55✔ &fGiven %amount%x %item% to %target%."
+    given-dropped: "&#55FF55✔ &fGiven %amount%x %item% to %target%. (Dropped)"
+    received: "&#55FF55✔ &fYou received %amount%x %item%!"
+    already-have-premium: "&#FF5555✘ &fYou already have Premium!"
+    premium-activated: "&#55FF55✔ &fPremium Pass Activated!"
+    coins-redeemed: "&#55FF55✔ &fRedeemed %amount% Battle Coins!"
+    max-level-reached: "&#FF5555✘ &fYou are already at Max Level!"
 
   coins:
     added-sender: "&#55FF55✔ &fAdded &#00AAFF%amount% Coins &fto %target%."

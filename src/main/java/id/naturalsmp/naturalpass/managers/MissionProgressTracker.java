@@ -64,12 +64,20 @@ public class MissionProgressTracker {
             if (newProgress >= mission.required && currentProgress < mission.required) {
                 completedKeys.add(missionKey);
 
-                data.xp += mission.xpReward;
+                int eventMultiplier = plugin.getXpEventManager().getMultiplier();
+                int xpToAdd = mission.xpReward * eventMultiplier;
+
+                data.xp += xpToAdd;
                 checkLevelUp(player, data);
+
+                String xpText = String.valueOf(xpToAdd);
+                if (eventMultiplier > 1) {
+                    xpText = xpToAdd + " (" + eventMultiplier + "x)";
+                }
 
                 player.sendMessage(messageManager.getPrefix() + messageManager.getMessage("messages.mission.completed",
                         "%mission%", mission.name,
-                        "%reward_xp%", String.valueOf(mission.xpReward)));
+                        "%reward_xp%", xpText));
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
                 showCompletedBossBar(player, mission.name);
@@ -126,6 +134,9 @@ public class MissionProgressTracker {
             player.sendMessage(messageManager.getPrefix() + messageManager.getMessage("messages.level-up",
                     "%level%", String.valueOf(data.level)));
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
+
+            // Give naturalcoin
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "naturalcoin give " + player.getName() + " 1");
 
             int available = plugin.getRewardManager().countAvailableRewards(player, data);
             if (available > 0) {

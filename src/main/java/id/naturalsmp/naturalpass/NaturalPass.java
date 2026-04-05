@@ -37,6 +37,7 @@ public class NaturalPass extends JavaPlugin {
     private SoundManager soundManager;
     private RewardEditorManager rewardEditorManager;
     private NaturalPassExpansion placeholderExpansion;
+    private XPEventManager xpEventManager;
     private MissionEditorManager missionEditorManager;
 
     private boolean updateAvailable = false;
@@ -62,6 +63,7 @@ public class NaturalPass extends JavaPlugin {
         customItemManager = new CustomItemManager(this);
         soundManager = new SoundManager(this, customItemManager);
         guiManager = new GuiManager(this, playerDataManager, missionManager, rewardManager, messageManager, configManager);
+        xpEventManager = new XPEventManager(this);
         rewardEditorManager = new RewardEditorManager(this);
         missionEditorManager = new MissionEditorManager(this);
         rewardEditorManager = new RewardEditorManager(this);
@@ -137,6 +139,9 @@ public class NaturalPass extends JavaPlugin {
         }
         if (databaseManager != null) {
             databaseManager.shutdown();
+        }
+        if (xpEventManager != null) {
+            xpEventManager.shutdown();
         }
     }
 
@@ -323,5 +328,9 @@ public class NaturalPass extends JavaPlugin {
 
     public RewardEditorManager getRewardEditorManager() {
         return rewardEditorManager;
+    }
+
+    public XPEventManager getXpEventManager() {
+        return xpEventManager;
     }
 }
