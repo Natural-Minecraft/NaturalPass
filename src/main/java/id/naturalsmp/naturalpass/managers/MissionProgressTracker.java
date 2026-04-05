@@ -135,9 +135,6 @@ public class MissionProgressTracker {
                     "%level%", String.valueOf(data.level)));
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
 
-            // Give naturalcoin
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "naturalcoin give " + player.getName() + " 1");
-
             int available = plugin.getRewardManager().countAvailableRewards(player, data);
             if (available > 0) {
                 player.sendMessage(messageManager.getPrefix() + messageManager.getMessage("messages.new-rewards"));

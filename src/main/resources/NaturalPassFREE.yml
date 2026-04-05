@@ -23,17 +23,37 @@
 # <player> will be replaced with the player's name
 
 level-1:
-  material: IRON_INGOT
-  amount: 16
+  items:
+    item1:
+      material: IRON_INGOT
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-2:
-  material: IRON_INGOT
-  amount: 8
+  items:
+    item1:
+      material: IRON_INGOT
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-3:
-  material: COAL
-  amount: 32
+  items:
+    item1:
+      material: COAL
+      amount: 32
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-4:
-  material: REDSTONE
-  amount: 16
+  items:
+    item1:
+      material: REDSTONE
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-5:
   items:
     item1:
@@ -45,33 +65,81 @@ level-5:
     money:
       command: "eco give <player> 1000"
       display: "$1000"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-6:
-  material: EMERALD
-  amount: 4
+  items:
+    item1:
+      material: EMERALD
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-7:
-  material: DIAMOND
-  amount: 2
+  items:
+    item1:
+      material: DIAMOND
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-8:
-  material: IRON_BLOCK
-  amount: 2
+  items:
+    item1:
+      material: IRON_BLOCK
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-9:
-  material: GOLD_BLOCK
-  amount: 1
+  items:
+    item1:
+      material: GOLD_BLOCK
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-10:
-  command: "eco give <player> 5000"
-  display: "$5000 Money"
+  items:
+    cmd1:
+      command: "eco give <player> 5000"
+      display: "$5000 Money"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-11:
-  material: ENDER_PEARL
-  amount: 8
+  items:
+    item1:
+      material: ENDER_PEARL
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-12:
-  material: BLAZE_ROD
-  amount: 4
+  items:
+    item1:
+      material: BLAZE_ROD
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-13:
-  material: GHAST_TEAR
-  amount: 2
+  items:
+    item1:
+      material: GHAST_TEAR
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-14:
-  material: MAGMA_CREAM
-  amount: 8
+  items:
+    item1:
+      material: MAGMA_CREAM
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-15:
   items:
     bottles:
@@ -80,18 +148,41 @@ level-15:
     money:
       command: "eco give <player> 2500"
       display: "$2500"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-16:
-  material: QUARTZ
-  amount: 32
+  items:
+    item1:
+      material: QUARTZ
+      amount: 32
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-17:
-  material: GLOWSTONE
-  amount: 16
+  items:
+    item1:
+      material: GLOWSTONE
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-18:
-  material: PRISMARINE_SHARD
-  amount: 16
+  items:
+    item1:
+      material: PRISMARINE_SHARD
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-19:
-  material: PRISMARINE_CRYSTALS
-  amount: 8
+  items:
+    item1:
+      material: PRISMARINE_CRYSTALS
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-20:
   items:
     diamonds:
@@ -103,33 +194,81 @@ level-20:
     permission:
       command: "lp user <player> permission set kit.vip true"
       display: "VIP Kit Access"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-21:
-  material: SLIME_BALL
-  amount: 16
+  items:
+    item1:
+      material: SLIME_BALL
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-22:
-  material: GUNPOWDER
-  amount: 16
+  items:
+    item1:
+      material: GUNPOWDER
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-23:
-  material: STRING
-  amount: 32
+  items:
+    item1:
+      material: STRING
+      amount: 32
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-24:
-  material: SPIDER_EYE
-  amount: 8
+  items:
+    item1:
+      material: SPIDER_EYE
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-25:
-  material: SHULKER_SHELL
-  amount: 1
+  items:
+    item1:
+      material: SHULKER_SHELL
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-26:
-  material: PHANTOM_MEMBRANE
-  amount: 4
+  items:
+    item1:
+      material: PHANTOM_MEMBRANE
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-27:
-  material: NAUTILUS_SHELL
-  amount: 2
+  items:
+    item1:
+      material: NAUTILUS_SHELL
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-28:
-  material: RABBIT_FOOT
-  amount: 4
+  items:
+    item1:
+      material: RABBIT_FOOT
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-29:
-  material: TURTLE_SCUTE
-  amount: 2
+  items:
+    item1:
+      material: TURTLE_SCUTE
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-30:
   items:
     enchantedbook:
@@ -141,33 +280,81 @@ level-30:
     xp:
       command: "xp give <player> 100L"
       display: "100 XP Levels"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-31:
-  material: IRON_HORSE_ARMOR
-  amount: 1
+  items:
+    item1:
+      material: IRON_HORSE_ARMOR
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-32:
-  material: IRON_HORSE_ARMOR
-  amount: 1
+  items:
+    item1:
+      material: IRON_HORSE_ARMOR
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-33:
-  material: SADDLE
-  amount: 1
+  items:
+    item1:
+      material: SADDLE
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-34:
-  material: NAME_TAG
-  amount: 2
+  items:
+    item1:
+      material: NAME_TAG
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-35:
-  material: GOLDEN_CARROT
-  amount: 8
+  items:
+    item1:
+      material: GOLDEN_CARROT
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-36:
-  material: GLISTERING_MELON_SLICE
-  amount: 8
+  items:
+    item1:
+      material: GLISTERING_MELON_SLICE
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-37:
-  material: FERMENTED_SPIDER_EYE
-  amount: 4
+  items:
+    item1:
+      material: FERMENTED_SPIDER_EYE
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-38:
-  material: BLAZE_POWDER
-  amount: 8
+  items:
+    item1:
+      material: BLAZE_POWDER
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-39:
-  material: ENDER_EYE
-  amount: 2
+  items:
+    item1:
+      material: ENDER_EYE
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-40:
   items:
     diamond:
@@ -179,45 +366,113 @@ level-40:
     effect:
       command: "effect give <player> minecraft:speed 3600 2"
       display: "Speed II (1 hour)"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-41:
-  material: EMERALD_BLOCK
-  amount: 1
+  items:
+    item1:
+      material: EMERALD_BLOCK
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-42:
-  material: ANCIENT_DEBRIS
-  amount: 1
+  items:
+    item1:
+      material: ANCIENT_DEBRIS
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-43:
-  material: NETHERITE_SCRAP
-  amount: 1
+  items:
+    item1:
+      material: NETHERITE_SCRAP
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-44:
-  material: CRYING_OBSIDIAN
-  amount: 8
+  items:
+    item1:
+      material: CRYING_OBSIDIAN
+      amount: 8
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-45:
-  material: RESPAWN_ANCHOR
-  amount: 1
+  items:
+    item1:
+      material: RESPAWN_ANCHOR
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-46:
-  material: LODESTONE
-  amount: 1
+  items:
+    item1:
+      material: LODESTONE
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-47:
-  material: HONEYCOMB
-  amount: 16
+  items:
+    item1:
+      material: HONEYCOMB
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-48:
-  material: HONEY_BLOCK
-  amount: 4
+  items:
+    item1:
+      material: HONEY_BLOCK
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-49:
-  material: SHULKER_SHELL
-  amount: 2
+  items:
+    item1:
+      material: SHULKER_SHELL
+      amount: 2
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-50:
-  material: TOTEM_OF_UNDYING
-  amount: 1
+  items:
+    item1:
+      material: TOTEM_OF_UNDYING
+      amount: 1
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-51:
-  material: COPPER_BLOCK
-  amount: 16
+  items:
+    item1:
+      material: COPPER_BLOCK
+      amount: 16
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-52:
-  material: AMETHYST_SHARD
-  amount: 32
+  items:
+    item1:
+      material: AMETHYST_SHARD
+      amount: 32
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-53:
-  material: ECHO_SHARD
-  amount: 4
+  items:
+    item1:
+      material: ECHO_SHARD
+      amount: 4
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
 level-54:
   items:
     star:
@@ -232,3 +487,6 @@ level-54:
     announce:
       command: "say <player> has completed the entire Battle Pass!"
       display: "Server-wide Recognition"
+    coin:
+      command: naturalcoin give <player> 1
+      display: 1x Natural Coin
