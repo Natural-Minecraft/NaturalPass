@@ -490,9 +490,9 @@ level-54:
     rank:
       command: "lp user <player> parent add legend"
       display: "Legend Rank"
-    title:
-      command: "lp user <player> meta addprefix 100 \"&5[Legend] \""
-      display: "Legend Title"
+    suffix:
+      command: "lp user <player> permission set naturalsmp.suffix.legend"
+      display: "Ligend Suffix"
     announce:
       command: "say <player> has become a LEGEND by completing the Premium Battle
         Pass!"

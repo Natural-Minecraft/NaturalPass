@@ -481,9 +481,9 @@ level-54:
     money:
       command: "eco give <player> 30000"
       display: "$30,000"
-    title:
-      command: "lp user <player> meta addprefix 100 \"&6[Battle Master] \""
-      display: "Battle Master Title"
+    suffix:
+      command: "lp user <player> permission set naturalsmp.suffix.battlemaster"
+      display: "Battle Master Suffix"
     announce:
       command: "say <player> has completed the entire Battle Pass!"
       display: "Server-wide Recognition"
