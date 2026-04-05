@@ -91,9 +91,9 @@ public class XPEventManager {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     if (player.isValid() && !player.isDead()) {
                         // Spawn happy villager/totem cross particles around the player's head
-                        player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, 
+                        player.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, 
                                 player.getLocation().add(0, 2.2, 0), 1, 0.3, 0.1, 0.3, 0.0);
-                        player.getWorld().spawnParticle(Particle.TOTEM, 
+                        player.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, 
                                 player.getLocation().add(0, 1.0, 0), 2, 0.5, 0.5, 0.5, 0.05);
                     }
                 }
