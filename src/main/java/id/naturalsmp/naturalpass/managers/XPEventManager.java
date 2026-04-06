@@ -76,21 +76,10 @@ public class XPEventManager {
                     }
                     this.cancel();
                 } else {
-                    // Send action bar every second (run every 20 ticks)
-                    String actionBarMsg = GradientColorParser.parse(
-                            "<gradient:#FFD700:#FF6B6B>✦ NaturalPass XP Event (" + multiplier + "x) ✦</gradient> <gradient:#00FF88:#45B7D1>" + getTimeRemaining() + "</gradient>");
-                    
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         if (p.isValid() && !p.isDead()) {
-                            try {
-                                // Add fake LUCK effect (no particles, keeps UI icon)
-                                p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.LUCK, 60, 0, false, false, true));
-                                
-                                p.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR, 
-                                        new net.md_5.bungee.api.chat.TextComponent(actionBarMsg));
-                            } catch (Exception ignored) {
-                                // Fallback if server version doesn't support specific action bar methods
-                            }
+                            // Add fake LUCK effect (no particles, keeps UI icon)
+                            p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.LUCK, 60, 0, false, false, true));
                         }
                     }
                 }
