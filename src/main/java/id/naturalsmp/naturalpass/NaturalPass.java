@@ -101,7 +101,18 @@ public class NaturalPass extends JavaPlugin {
                             registerPlaceholders();
                             checkForUpdates();
 
-                            getLogger().info(messageManager.getMessage("messages.plugin-enabled"));
+                            org.bukkit.Bukkit.getConsoleSender().sendMessage(
+                                    org.bukkit.ChatColor.translateAlternateColorCodes('&',
+                                        "\n&a===============\n" +
+                                        "&a _   _       _                  _     &e ____               \n" +
+                                        "&a| \ | | __ _| |_ _   _ _ __ __ _| |   &e|  _ \ __ _ ___ ___ \n" +
+                                        "&a|  \| |/ _` | __| | | | '__/ _` | |   &e| |_) / _` / __/ __|\n" +
+                                        "&a| |\  | (_| | |_| |_| | | | (_| | |   &e|  __/ (_| \\__ \\__ \\n" +
+                                        "&a|_| \_|\__,_|\__|\__,_|_|  \__,_|_|   &e|_|   \__,_|___/___|\n" +
+                                        "       >> &eNaturalPass v" + getDescription().getVersion() + " Enabled! <<\n" +
+                                        "&a===============\n"
+                                    )
+                            );
                             this.cancel();
                         } else if (attempts >= MAX_ATTEMPTS) {
                             getLogger().severe("Failed to initialize MissionManager after 30 seconds!");
