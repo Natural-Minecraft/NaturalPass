@@ -99,7 +99,7 @@ public class NaturalPass extends JavaPlugin {
                             });
 
                             registerPlaceholders();
-                            checkForUpdates();
+                            // checkForUpdates(); // Disabled update checking for custom internal plugin
 
                             org.bukkit.Bukkit.getConsoleSender().sendMessage(
                                     org.bukkit.ChatColor.translateAlternateColorCodes('&',

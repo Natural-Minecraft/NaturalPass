@@ -1,5 +1,5 @@
 name: NaturalPass
-version: '8.0'
+version: '1.7.6'
 main: id.naturalsmp.naturalpass.NaturalPass
 api-version: '1.21'
 author: [ Natural Dev Creative ]
