@@ -103,14 +103,14 @@ public class NaturalPass extends JavaPlugin {
 
                             org.bukkit.Bukkit.getConsoleSender().sendMessage(
                                     org.bukkit.ChatColor.translateAlternateColorCodes('&',
-                                        "\n&a===============\n" +
+                                        "\n&a================================================================================\n" +
                     "&a _   _       _                  _     &e ____\n" +
                     "&a| \\ | | __ _| |_ _   _ _ __ __ _| |   &e |  _ \\ __ _ ___ ___\n" +
                     "&a|  \\| |/ _` | __| | | | '__/ _` | |   &e | |_) / _` / __/ __|\n" +
                     "&a| |\\  | (_| | |_| |_| | | | (_| | |   &e |  __/ (_| \\__ \\__ \\\n" +
                     "&a|_| \\_|\\__,_|\\__|\\__,_|_|    |_|   \\__&e,_|___/___|\n" +
                                         "       >> &eNaturalPass v" + getDescription().getVersion() + " Enabled! <<\n" +
-                                        "&a===============\n"
+                                        "&a================================================================================\n"
                                     )
                             );
                             this.cancel();
